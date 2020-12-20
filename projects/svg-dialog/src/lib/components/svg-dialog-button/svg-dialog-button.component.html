@@ -1,0 +1,23 @@
+<svg:defs *ngIf="type==='raised' && !disabled">
+  <svg:filter [id]="uniqueId+'-shadow'" x="0" y="0" [attr.width]="(width+cornerRadius/3+5)/width" [attr.height]="(height+cornerRadius/3+5)/height">
+    <svg:feOffset result="offOut" in="SourceAlpha" [attr.dx]="cornerRadius/3" [attr.dy]="cornerRadius/5" />
+    <svg:feGaussianBlur result="blurOut" in="offOut" stdDeviation="5" />
+    <svg:feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+  </svg:filter>
+</svg:defs>
+<svg:clipPath [id]="uniqueId+'-clip'">
+  <svg:rect [attr.x]="-width/2" [attr.y]="-height/2" [attr.width]="width" [attr.height]="height" [attr.rx]="cornerRadius"
+    [attr.ry]="cornerRadius" />
+</svg:clipPath>
+<svg:g class="mouser" [ngClass]="{'disabled':disabled,'raised':type==='raised','stroked':type==='stroked','flat':type==='flat'}" (mousedown)="mousedown.next($event)" (mouseleave)="mouseleave.next($event)" (mouseup)="mouseup.next($event)">
+<svg:rect class="background" [attr.x]="-width/2" [attr.y]="-height/2" [attr.width]="width"
+  [attr.height]="height" [attr.rx]="cornerRadius" [attr.ry]="cornerRadius" [attr.filter]="type==='raised' && !disabled ? 'url(#'+uniqueId+'-shadow)' : ''"
+  />
+<svg:rect class="hover" [attr.x]="-width/2" [attr.y]="-height/2" [attr.width]="width"
+  [attr.height]="height" [attr.rx]="cornerRadius"/>
+<svg:g class="contents" [ngStyle]="{'font-size':height/2}">
+  <svg:circle *ngFor="let click of clicks" class="click" [attr.cx]="click.x" [attr.cy]="click.y" [attr.r]="click.r"
+    [attr.clip-path]="'url(#'+uniqueId+'-clip)'" @clickAnim />
+  <ng-content></ng-content>
+</svg:g>
+</svg:g>

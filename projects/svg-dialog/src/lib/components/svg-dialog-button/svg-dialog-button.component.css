@@ -1,0 +1,36 @@
+.mouser {
+  cursor:pointer;
+}
+.background {
+  fill:rgba(0,0,0,0);
+  stroke:rgba(0,0,0,0);
+}
+.hover {
+  fill:rgba(0,0,0,0);
+}
+
+.mouser.raised .background,
+.mouser.flat .background {
+  fill:#dddddd;
+}
+.mouser.stroked .background {
+  stroke:currentColor;
+}
+.mouser.disabled {
+  cursor:default;
+}
+.mouser:not(.disabled):hover .hover {
+  fill:rgba(0,0,0,0.1);
+}
+.contents > ::ng-deep * {
+  pointer-events: none;
+  alignment-baseline:central;
+  text-anchor: middle;
+}
+.mouser.disabled .contents > ::ng-deep * {
+  opacity:0.3;
+}
+.click {
+  fill:rgba(0,0,0,0.2);
+  transform-origin: top left;
+}

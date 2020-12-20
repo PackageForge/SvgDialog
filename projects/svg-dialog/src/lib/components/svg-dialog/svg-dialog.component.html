@@ -1,0 +1,9 @@
+<svg:defs>
+  <svg:filter id="svg-dialog-filter" x="0" y="0" [attr.width]="childWidth ? (childWidth+20)/childWidth : 1"
+    [attr.height]="childHeight ? (childHeight+20)/childHeight : 1">
+    <svg:feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+    <svg:feGaussianBlur result="blurOut" in="offOut" stdDeviation="5" />
+    <svg:feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+  </svg:filter>
+</svg:defs>
+<svg:rect class="box" #outlet x="0" y="0" rx="10" ry="10" [attr.width]="childWidth" [attr.height]="childHeight" filter="url(#svg-dialog-filter)" />

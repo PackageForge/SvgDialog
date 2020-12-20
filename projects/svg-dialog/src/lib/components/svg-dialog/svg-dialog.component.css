@@ -1,0 +1,8 @@
+.overlay {
+  fill:rgba(0,0,0,0.3);
+}
+.box {
+  fill:white;
+  stroke:black;
+  stroke-width:2;
+}

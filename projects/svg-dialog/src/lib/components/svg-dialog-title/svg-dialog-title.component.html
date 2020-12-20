@@ -1,0 +1,5 @@
+<svg:path class="bar" [attr.d]="d"/>
+<svg:g [attr.transform]="'translate('+(radius*0.75)+','+(height/2)+')'" class="content">
+<ng-content></ng-content>
+</svg:g>
+<svg:line class="line" [attr.x1]="inset" [attr.y1]="height-1" [attr.x2]="parentWidth-2*inset" [attr.y2]="height-1"/>

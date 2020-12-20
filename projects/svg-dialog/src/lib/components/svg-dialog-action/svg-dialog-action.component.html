@@ -1,0 +1,5 @@
+<svg:path class="bar" [attr.d]="d"/>
+<svg:g [attr.transform]="'translate('+(parentWidth/2)+','+(parentHeight-height/2)+')'">
+<ng-content></ng-content>
+</svg:g>
+<svg:line class="line" [attr.x1]="inset" [attr.y1]="parentHeight-height-2*inset" [attr.x2]="parentWidth-2*inset" [attr.y2]="parentHeight-height-2*inset"/>
