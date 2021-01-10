@@ -67,7 +67,7 @@ export class SvgDialogLoader {
       if (dynamicModule.componentId !== componentId) {
         throw new Error(
           'SvgDialogLoader: Dynamic module for'
-          + `${componentId} does not match manifest.`,
+          + ` componentId ${componentId} does not match manifest.`,
         )
       }
 
